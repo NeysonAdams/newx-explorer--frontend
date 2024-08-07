@@ -1,0 +1,161 @@
+@import url('../../vendor/fonts.css');
+.card
+{
+    box-sizing: border-box;
+    font-family: 'RobotoSlab', sans-serif;
+    border-radius: 15px;
+    overflow: hidden;
+    background-color: white;
+    position: relative;
+    height: 567px;
+}
+
+.card__button
+{
+    background-size: 24px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: white;
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    top: 24px;
+    right: 24px;
+    border-radius: 15px;
+    border: none;
+}
+
+.card__extra-message
+{
+    display: flex;
+    opacity: 0;
+    position: absolute;
+    background-color: white;
+    height: 40px;
+    top: 24px;
+    right: 70px;
+    border-radius: 15px;
+    padding: 0 10px;
+    align-items: center;
+    justify-content: center; 
+    transition: opacity 0.5s ease-in-out;
+}
+
+.card__button:hover .card__extra-message {
+    opacity: 1; 
+}
+
+.card__save-button
+{
+    background-image: url("../../images/bookmark.svg");
+}
+
+.card__delete-button
+{
+    background-image: url("../../images/trash.svg");
+}
+
+.card__save-button-picked
+{
+    background-image: url("../../images/bookmark-picked.svg");
+}
+
+.card__date
+{
+    margin:  14px 0 0 14px;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 24px;
+    color: rgba(182, 188, 191, 1);
+}
+
+.card__title
+{
+    margin:  14px 14px 0 14px;
+    font-weight: 400;
+    font-size: 26px;
+    line-height: 30px;
+}
+
+.card__description
+{
+    margin:  14px 14px 0 14px;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 22px;
+    height: 110px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.card__from
+{
+    position: absolute;
+    bottom: 0;
+    left: 14px;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 22px;
+    color:rgba(182, 188, 191, 1);
+}
+
+.card__image-container
+{
+    width: 100%;
+    height: 272px;
+}
+
+.card__image
+{
+    width: 100%;
+    height: 100%;
+    object-fit: cover; 
+}
+
+
+@media (max-width: 868px) {
+    .card
+    {
+        height: 420px;
+    }
+    .card__image-container
+    {
+        width: 100%;
+        height: 150px;
+    }
+
+    .card__title
+    {
+        
+        font-size: 22px;
+        line-height: 24px;
+    }
+    .card__description
+    {
+        margin: 10px 14px;
+        height: 88px;
+    }
+}
+
+@media (max-width: 480px) {
+    .card
+    {
+        height: 440px;
+    }
+    .card__image-container
+    {
+        width: 100%;
+        height: 196px;
+    }
+    .card__title{
+        height: 48px;
+        
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    .card__description
+    {
+        margin: 10px 14px;
+        height: 88px;
+    }
+}

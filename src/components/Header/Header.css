@@ -1,0 +1,152 @@
+@import url('../../vendor/fonts.css');
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+.header{
+    font-family: 'RobotoSlab', sans-serif;
+    overflow: hidden;
+}
+
+.header__head{
+    display: flex;
+    padding: 0 104px;
+    justify-content: space-between;
+    align-items: center;
+    height: 80px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.header__head-style
+{
+    color: black;
+    background-color: white;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.5);
+}
+
+.header-main_style
+{
+    background-image: url('../../images/background.png');
+    background-size: cover;
+    background-position: center;
+    color: white;
+}
+
+.header__style
+{
+    color: black;
+    background-color: white;
+}
+
+.header__banner
+{
+    background-color: rgba(0, 0, 0, 0.5);
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    padding: 80px 0px;
+    width:100%;
+}
+
+.header__logo
+{
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 24px;
+    margin: 0;
+}
+
+.header__bunner-title
+{
+    font-weight: 400;
+    font-size: 60px;
+    line-height: 64px;
+    margin: 0 auto;
+    max-width: 608px;
+}
+
+.header_bunner-subtitle
+{
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 24px;
+    margin: 0 auto;
+    margin-top: 32px;
+    max-width: 608px;
+}
+
+.header__interactive
+{
+    display: inline-flex;
+    align-items: center;
+}
+
+
+
+@media (max-width: 800px) {
+    .header__head
+    {
+        padding: 0 40px;
+    }
+    .header__bunner-title
+    {
+        max-width: 452px;
+        font-size: 36px;
+        line-height: 40px;
+    }
+    .header_bunner-subtitle
+    {
+        max-width: 452px;
+    }
+}
+
+@media (max-width: 680px) {
+
+    .header__menu--open
+    {
+        background-color: rgba(26, 27, 34, 1);
+        color: white;
+    }
+
+}
+
+@media (max-width: 480px) {
+    .header__head{
+        height: 56px;
+        padding: 0 16px;
+    }
+
+    .header__logo
+    {
+        box-sizing: border-box;
+        font-size: 16px;
+    }
+    .header__banner
+    {
+        margin: 0;
+        padding: 30px 16px;
+    }
+    .header__bunner-title
+    {
+        padding-bottom: 0;
+    }
+    .header_bunner-subtitle
+    {
+        margin-top: 16px;
+    }
+}
+
+@media (max-width: 400px) {
+    .header__bunner-title
+    {
+        max-width: 252px;
+    }
+    .header_bunner-subtitle
+    {
+        max-width: 252px;
+    }
+}

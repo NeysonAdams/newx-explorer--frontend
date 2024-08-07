@@ -1,0 +1,87 @@
+@import url('../../vendor/fonts.css');
+.about
+{
+    font-family: 'RobotoSlab', sans-serif;
+    max-width: 1440px;
+    
+    padding: 0 104px;
+    margin: 80px auto;
+    display: flex;
+    justify-content: space-around;
+    align-items: start;
+}
+
+
+.about__image-container
+{
+    flex: 0 0  464px;
+    width: 464px;
+    height: 464px;
+    border-radius: 50%;
+    overflow: hidden;
+    display: flex; 
+    align-items: center;
+    justify-content: center;
+}
+.about__image
+{
+    width: 100%;
+    height: 100%;
+    object-fit: cover; 
+}
+
+.about__description
+{
+    flex: 1 1 auto;
+    max-width: 600px;
+    margin-left: 10px;
+}
+
+.about__title
+{
+    font-weight: 400;
+    font-size: 40px;
+    line-height: 46px;
+}
+
+.about__text
+{
+    margin-top: 24px;
+    margin-bottom: 0;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 24px;
+}
+
+@media (max-width: 800px) {
+    .about
+    {
+        padding: 0 40px;
+    }
+    .about__description
+    {
+        max-width: 400px;
+    }
+    .about__image-container
+    {
+        flex: 0 0 232px;
+        width: 232px;
+        height: 232px;
+    }
+}
+
+@media (max-width: 480px) {
+    .about
+    {
+        flex-direction: column;
+    }
+
+    .about__image-container
+    {
+        flex: 0 0 272px;
+        width: 272px;
+        height: 272px;
+        justify-self: center;
+        margin: auto;
+    }
+}
