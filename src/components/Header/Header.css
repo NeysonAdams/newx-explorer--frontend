@@ -101,9 +101,9 @@
         font-size: 36px;
         line-height: 40px;
     }
-    .header_bunner-subtitle
+    .header__bunner-subtitle
     {
-        
+        max-width: 452px;
         margin-top: 16px;
         max-width: 452px;
     }
@@ -139,7 +139,7 @@
     {
         padding-bottom: 0;
     }
-    .header_bunner-subtitle
+    .header__bunner-subtitle
     {
         margin-top: 16px;
     }
