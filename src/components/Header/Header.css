@@ -8,7 +8,6 @@
 
 .header{
     font-family: 'RobotoSlab', sans-serif;
-    overflow: hidden;
 }
 
 .header__head{
@@ -69,7 +68,7 @@
     max-width: 608px;
 }
 
-.header_bunner-subtitle
+.header__bunner-subtitle
 {
     font-weight: 400;
     font-size: 18px;
@@ -90,7 +89,11 @@
 @media (max-width: 800px) {
     .header__head
     {
+        height: 66px;
         padding: 0 40px;
+    }
+    .header__banner{
+        padding: 40px 0;
     }
     .header__bunner-title
     {
@@ -100,6 +103,8 @@
     }
     .header_bunner-subtitle
     {
+        
+        margin-top: 16px;
         max-width: 452px;
     }
 }
@@ -137,16 +142,5 @@
     .header_bunner-subtitle
     {
         margin-top: 16px;
-    }
-}
-
-@media (max-width: 400px) {
-    .header__bunner-title
-    {
-        max-width: 252px;
-    }
-    .header_bunner-subtitle
-    {
-        max-width: 252px;
     }
 }

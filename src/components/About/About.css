@@ -33,7 +33,6 @@
 .about__description
 {
     flex: 1 1 auto;
-    max-width: 600px;
     margin-left: 10px;
 }
 
@@ -57,10 +56,6 @@
     .about
     {
         padding: 0 40px;
-    }
-    .about__description
-    {
-        max-width: 400px;
     }
     .about__image-container
     {

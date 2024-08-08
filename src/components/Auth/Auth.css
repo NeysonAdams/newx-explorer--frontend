@@ -25,7 +25,17 @@
     border: 1px solid black;
 }
 
-@media (max-width: 680px) {
+@media (max-width: 800px) {
+    .auth
+    {
+        width: 152px;
+        height: 40px;
+        font-size: 16px;
+        
+    }
+}
+
+@media (max-width: 660px) {
     .auth
     {
         width: 100%;

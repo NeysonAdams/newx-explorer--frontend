@@ -68,12 +68,16 @@ function App() {
   //Login Modal Methods
   const handleOnLogin = (data) => {}
 
+  const handleLoginModalOpen = () => {
+    setIsModalLoginOpen(true);
+  };
+
   const handleLoginModalClose = () => {
     setIsModalLoginOpen(false);
   };
   const handleSwitchToSignUp = ()=>{
     handleLoginModalClose();
-    handleRegistrationModalOpen();
+    handleRegistrartionModalOpen();
   }
 
   return (

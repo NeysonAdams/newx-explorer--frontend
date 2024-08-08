@@ -31,7 +31,7 @@ const Header = ({onSignUpOpen, isLoggedIn, onSerch, isArticles=false}) =>{
             {!isArticles && (
             <div className='header__banner'>
                 <h1 className='header__bunner-title'>What's going on in the world?</h1>
-                <p className='header_bunner-subtitle'>Find the latest news on any topic and save them in your personal account.</p>
+                <p className='header__bunner-subtitle'>Find the latest news on any topic and save them in your personal account.</p>
                 <SearchForm onSerch={onSerch}/>
             </div>
             )}
