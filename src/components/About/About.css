@@ -34,6 +34,7 @@
 {
     flex: 1 1 auto;
     margin-left: 10px;
+    padding-left: 56px;
 }
 
 .about__title
@@ -63,12 +64,17 @@
         width: 232px;
         height: 232px;
     }
+    .about__description
+    {
+        padding-left: 32px;
+    }
 }
 
 @media (max-width: 480px) {
     .about
     {
         flex-direction: column;
+        padding: 0 16px;
     }
 
     .about__image-container
@@ -78,5 +84,10 @@
         height: 272px;
         justify-self: center;
         margin: auto;
+    }
+    
+    .about__description
+    {
+        padding: 0;
     }
 }
