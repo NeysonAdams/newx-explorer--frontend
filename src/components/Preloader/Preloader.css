@@ -1,0 +1,51 @@
+@import url('../../vendor/fonts.css');
+.preloader
+{
+    font-family: 'RobotoSlab', sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+}
+
+.preloader__image
+{
+    width: 74px;
+    height: 74px;
+    margin:auto;
+}
+
+.preloader__message
+{
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 24px;
+    margin: 20px auto;
+    margin-top: 100px;
+    color: rgba(182, 188, 191, 1);
+}
+
+.preloader__circle-preloader {
+    display: block;
+    width: 50px;
+    height: 50px;
+    border: 4px solid #444;
+    border-bottom-color: #888;
+    
+    border-radius: 50%;
+    
+    position: absolute;
+    top: -30px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    
+    animation: spin .75s infinite linear;
+}
+
+@keyframes spin {
+    100% {
+        transform: rotate(360deg);
+    }
+}

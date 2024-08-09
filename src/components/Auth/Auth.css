@@ -1,0 +1,43 @@
+@import url('../../vendor/fonts.css');
+
+.auth
+{
+    font-family: 'RobotoSlab', sans-serif;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 24px;
+    background: transparent;
+    margin-left: 15px;
+    border-radius: 50px;
+    width: 176px;
+    height: 48px;
+}
+
+.auth__sighin-button-white-style
+{
+    color: white;
+    border: 1px solid white;
+}
+
+.auth__sighin-button-black-style
+{
+    color: black;
+    border: 1px solid black;
+}
+
+@media (max-width: 800px) {
+    .auth
+    {
+        width: 152px;
+        height: 40px;
+        font-size: 16px;
+        
+    }
+}
+
+@media (max-width: 660px) {
+    .auth
+    {
+        width: 100%;
+    }
+}
