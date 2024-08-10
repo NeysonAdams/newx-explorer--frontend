@@ -4,7 +4,8 @@ import './Main.css';
 import About from "../About/About";
 import SearchResult from "../SearchResult/SearchResult";
 
-const Main = ({isSerchingStarted, articlesObserv, totalArticles, articles, showMoreHandler, isLoggedIn})=>
+const Main = ({isSerchingStarted, articlesObserv, totalArticles, articles, 
+    keyword, showMoreHandler, isLoggedIn, isArticleSawed, onSawe, onDelete,})=>
 {
     return (
         <>
@@ -13,8 +14,12 @@ const Main = ({isSerchingStarted, articlesObserv, totalArticles, articles, showM
                 articlesObserv={articlesObserv}
                 totalArticles={totalArticles}
                 articles={articles}
+                keyword={keyword}
                 showMoreHandler={showMoreHandler}
-                isLoggedIn={isLoggedIn}/>
+                isLoggedIn={isLoggedIn}
+                isArticleSawed={isArticleSawed}
+                onSawe={onSawe}
+                onDelete={onDelete}/>
             <About/>
         </>
     );

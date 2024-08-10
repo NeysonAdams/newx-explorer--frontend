@@ -3,8 +3,23 @@ import './SavedArticles.css';
 
 import Card from "../Card/Card";
 
-const SavedArticles =({articles, isLoggedIn})=>
-{
+const SavedArticles =({articles, isLoggedIn,
+    onSawe,
+    onDelete})=>
+{   
+    
+    const getKeyWords = () =>{
+        const keywords = articles.map(article => article.keyword);
+        const uniqueKeywords = [...new Set(keywords)];
+
+        if(uniqueKeywords.length === 1)
+            return uniqueKeywords[0];
+        else if(uniqueKeywords.length === 2)
+            return `${uniqueKeywords[0]}, ${uniqueKeywords[1]}`
+
+        return `${uniqueKeywords[0]}, ${uniqueKeywords[1]} and ${uniqueKeywords.length-2} other`
+    }
+
     return (
         <>
             <div className='info'>
@@ -12,7 +27,7 @@ const SavedArticles =({articles, isLoggedIn})=>
                     <p className='info__title'>Saved articles</p>
                     <h4 className='info__subtitle'>{`Elise, you have ${articles ==null ? 0 : articles.length} saved articles`}</h4>
                     <p className='info__label'>By keywords: 
-                        <span className='info__keywords'> Nature, Yellowstone, and 2 other</span> </p>
+                        <span className='info__keywords'> {getKeyWords()}</span> </p>
                 </div>
             </div>
             <div className='search'>
@@ -21,7 +36,14 @@ const SavedArticles =({articles, isLoggedIn})=>
             <div className="search__grid">
                     <ul className="search__grid-cards">
                         {articles.map((item)=> (
-                            <Card  item={item} isArticles={true} key={item._id} isLoggedIn={isLoggedIn}/>
+                            <Card  
+                                item={item} 
+                                isArticles={true} 
+                                key={item._id} 
+                                Sawed={true} 
+                                isLoggedIn={isLoggedIn} 
+                                onSawe={onSawe} 
+                                onDelete={onDelete}/>
                         ))}
                     </ul>
                 </div>

@@ -1,8 +1,23 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import './Auth.css';
 
-const Auth = ({onSignUpOpen, isArticles, menuOpen})=>
+import CurrentUserContext from '../../context/CurrentUserContext';
+
+import logoutBlack from "../../images/logout_black.svg";
+import logoutWhite from "../../images/logout_white.svg";
+
+const Auth = ({onSignUpOpen, isArticles, menuOpen, onLogOut})=>
 {
+    const {currentUser} = useContext(CurrentUserContext);
+
+    const buttonHandler = ()=>
+    {
+        if(currentUser===null)
+            onSignUpOpen();
+        else
+            onLogOut()
+    }
+
     return (
         <>
             <button 
@@ -10,7 +25,20 @@ const Auth = ({onSignUpOpen, isArticles, menuOpen})=>
                 'auth__sighin-button-black-style' : 
                 'auth__sighin-button-white-style'}`} 
             type='button' 
-            onClick={onSignUpOpen}>Sign in</button>
+            onClick={buttonHandler}>
+                {currentUser?
+                    ( 
+                        <>
+                            <p className='auth__name'>{currentUser.name}</p>
+                            <img className="auth__logout" 
+                                src={isArticles?
+                                        logoutBlack:
+                                        logoutWhite}
+                                alt='logout'/>
+                        </>
+                    ) 
+                    :"Sign in"}
+                </button>
         </>
     );
 }

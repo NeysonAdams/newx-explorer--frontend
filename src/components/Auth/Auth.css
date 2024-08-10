@@ -11,6 +11,24 @@
     border-radius: 50px;
     width: 176px;
     height: 48px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.auth__logout
+{
+    width:24px;
+    height: 24px;
+    margin: 0;
+    padding: 0;
+    margin-left: 24px;
+}
+
+.auth__name
+{
+    padding: 0;
+    margin: 0;
 }
 
 .auth__sighin-button-white-style
