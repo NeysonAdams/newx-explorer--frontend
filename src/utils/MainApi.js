@@ -12,18 +12,16 @@ export const signUp = ({ name, email, password })=>{
     console.log(baseUrl);
     return fetch(`${baseUrl}/signup`,{
         method: "POST",
-        mode: 'no-cors',
         headers: {
             "Content-type": "application/json",
         },
-        body: JSON.stringify({ name, email, password })
+        body: JSON.stringify({name, email, password })
     }).then(handleServerResponce);
 }
 
 export const signin = ({ email, password })=>{
     return fetch(`${baseUrl}/signin`,{
         method: "POST",
-        mode: 'no-cors',
         headers: {
             "Content-type": "application/json",
         },
@@ -34,7 +32,6 @@ export const signin = ({ email, password })=>{
 export const getCurrentUser = ()=>{
     const token = getToken();
     return fetch(`${baseUrl}/users/me`,{
-        mode: 'no-cors',
         headers: {
             "Content-type": "application/json",
             "Authorization": `Bearer ${token}`,
@@ -46,7 +43,6 @@ export const getArticle = ()=>{
     const token = getToken();
     return fetch(`${baseUrl}/articles`,{
         method: "GET",
-        mode: 'no-cors',
         headers: {
             "Content-type": "application/json",
             "Authorization": `Bearer ${token}`,
@@ -58,7 +54,6 @@ export const saweArticle = ({ keyword, title, text, date, source, link, image })
     const token = getToken();
     return fetch(`${baseUrl}/articles`,{
         method: "POST",
-        mode: 'no-cors',
         headers: {
             "Content-type": "application/json",
             "Authorization": `Bearer ${token}`,
@@ -78,7 +73,6 @@ export const deleteArticle = ({id})=>{
     const token = getToken();
     return fetch(`${baseUrl}/articles/${id}`,{
         method: "DELETE",
-        mode: 'no-cors',
         headers: {
             "Content-type": "application/json",
             "authorization": `Bearer ${token}`,
