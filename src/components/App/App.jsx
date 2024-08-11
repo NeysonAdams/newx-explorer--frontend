@@ -80,6 +80,7 @@ function App() {
 
   const isArticleSawed = ({article}) =>
   {
+    if(userArticles ==null) return -1;
     const index = userArticles.findIndex(item =>
       item.title === article.title &&
       item.text === article.text &&
@@ -112,6 +113,7 @@ function App() {
     if(query=="") return;
     setSerchingStart(true);
     setObservArticles(3);
+    setArticles(null);
     searchNews({query:query})
       .then((data) =>
       {
