@@ -1,6 +1,6 @@
 const apiKey = "c05cf0af963547b8bfcfc802ac214763"
 
-const baseUrl = "https://newsapi.org/v2/everything";
+const baseUrl = "https://cors-anywhere.herokuapp.com/https://newsapi.org/v2/everything";
 
 export const handleServerResponce = (res) =>{
     return res.ok? res.json() : Promise.reject(`Error: ${res.status}`);
