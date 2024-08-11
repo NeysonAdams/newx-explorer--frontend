@@ -1,4 +1,4 @@
-const {baseUrl = "http://localhost:3002"} = process.env.NODE_ENV;
+const {baseUrl = "http://localhost:3001"} = process.env.NODE_ENV;
 
 const getToken = ()=> localStorage.getItem('jwt');
 
