@@ -1,4 +1,6 @@
-const {baseUrl = "http://localhost:3001"} = process.env.NODE_ENV;
+const baseUrl = process.env.NODE_ENV === "production" 
+  ? "https://api.marconi.cow.strangled.net"
+  : "http://localhost:3001";
 
 const getToken = ()=> localStorage.getItem('jwt');
 
