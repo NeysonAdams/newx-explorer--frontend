@@ -205,7 +205,8 @@ function App() {
                 isLoggedIn={isLoggedIn}
                 onSawe={handleSaweArticle}
                 onDelete={handleDeleteFromSaweList}
-                isArticleSawed={isArticleSawed}/>
+                isArticleSawed={isArticleSawed}
+                onSngUpOpen={handleRegistrartionModalOpen}/>
             </>
           }
         />
@@ -227,7 +228,8 @@ function App() {
                     articles={userArticles} 
                     isLoggedIn={isLoggedIn}
                     onSawe={handleSaweArticle}
-                    onDelete={handleDeleteFromSaweList}/>
+                    onDelete={handleDeleteFromSaweList}
+                    onSngUpOpen={handleRegistrartionModalOpen}/>
                 </>
               }
             />

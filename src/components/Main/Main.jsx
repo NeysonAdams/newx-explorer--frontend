@@ -5,7 +5,7 @@ import About from "../About/About";
 import SearchResult from "../SearchResult/SearchResult";
 
 const Main = ({isSerchingStarted, articlesObserv, totalArticles, articles, 
-    keyword, showMoreHandler, isLoggedIn, isArticleSawed, onSawe, onDelete,})=>
+    keyword, showMoreHandler, isLoggedIn, isArticleSawed, onSawe, onDelete,onSngUpOpen})=>
 {
     return (
         <>
@@ -19,7 +19,8 @@ const Main = ({isSerchingStarted, articlesObserv, totalArticles, articles,
                 isLoggedIn={isLoggedIn}
                 isArticleSawed={isArticleSawed}
                 onSawe={onSawe}
-                onDelete={onDelete}/>
+                onDelete={onDelete}
+                onSngUpOpen={onSngUpOpen}/>
             <About/>
         </>
     );

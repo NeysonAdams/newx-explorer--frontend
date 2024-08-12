@@ -15,7 +15,8 @@ const SearchResult =(
         isLoggedIn,
         isArticleSawed,
         onSawe,
-        onDelete
+        onDelete,
+        onSngUpOpen
     })=>
 {
     
@@ -68,7 +69,8 @@ const SearchResult =(
                                             Sawed={id!==-1} 
                                             isLoggedIn={isLoggedIn} 
                                             onSawe={onSawe} 
-                                            onDelete={onDelete}/>);
+                                            onDelete={onDelete}
+                                            onSngUpOpen={onSngUpOpen}/>);
                                     }
                                     return result;
                                 })()

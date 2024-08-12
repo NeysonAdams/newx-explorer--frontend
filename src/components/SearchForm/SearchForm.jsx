@@ -10,13 +10,15 @@ const SearchForm = ({onSerch}) =>
       };
 
     const handleSubmit = (event)=>{
+        event.preventDefault(); 
         console.log(query);
         onSerch(query);
     }
 
     return (
         <>
-        <form className='search-form' >
+        <form className='search-form' 
+                onSubmit={handleSubmit}>
             <input 
                 onChange={handleQueryChange}
                 className='search-form__input' 
@@ -24,8 +26,7 @@ const SearchForm = ({onSerch}) =>
                 placeholder='Enter topic' />
             <button 
                 className="search-form__submit-button" 
-                type="button"
-                onClick={handleSubmit}>Search</button>
+                type="submit">Search</button>
         </form>
         </>
     );

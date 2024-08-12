@@ -3,7 +3,7 @@ import './Card.css';
 
 import test from "../../images/test/image_04.png"
 
-const Card =({item, isLoggedIn, Sawed, onSawe, onDelete, isArticles=false})=>
+const Card =({item, isLoggedIn, Sawed, onSawe, onDelete, onSngUpOpen, isArticles=false})=>
     {
         const [isSawed, setSawed] = useState(false);
         const [showExtraMessage, setShowExtraMessage] = useState(false);
@@ -28,7 +28,10 @@ const Card =({item, isLoggedIn, Sawed, onSawe, onDelete, isArticles=false})=>
 
         const handleSaweClick = ()=>
         {
-            if(!isLoggedIn) return;
+            if(!isLoggedIn) {
+                onSngUpOpen();
+                return;
+            }
             setSawed(!isSawed)
 
             if(isSawed || isArticles)

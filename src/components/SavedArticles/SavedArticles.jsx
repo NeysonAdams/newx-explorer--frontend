@@ -3,12 +3,18 @@ import './SavedArticles.css';
 
 import Card from "../Card/Card";
 
+import CurrentUserContext from '../../context/CurrentUserContext';
+
 const SavedArticles =({articles, isLoggedIn,
     onSawe,
-    onDelete})=>
+    onDelete,
+    onSngUpOpen})=>
 {   
-    
+    const {currentUser} = useContext(CurrentUserContext);
+
     const getKeyWords = () =>{
+        if(articles==null || articles.length==0)
+            return "";
         const keywords = articles.map(article => article.keyword);
         const uniqueKeywords = [...new Set(keywords)];
 
@@ -25,7 +31,7 @@ const SavedArticles =({articles, isLoggedIn,
             <div className='info'>
                 <div className='info__container'>
                     <p className='info__title'>Saved articles</p>
-                    <h4 className='info__subtitle'>{`Elise, you have ${articles ==null ? 0 : articles.length} saved articles`}</h4>
+                    <h4 className='info__subtitle'>{`${currentUser.name}, you have ${articles ==null ? 0 : articles.length} saved articles`}</h4>
                     <p className='info__label'>By keywords: 
                         <span className='info__keywords'> {getKeyWords()}</span> </p>
                 </div>
@@ -43,7 +49,8 @@ const SavedArticles =({articles, isLoggedIn,
                                 Sawed={true} 
                                 isLoggedIn={isLoggedIn} 
                                 onSawe={onSawe} 
-                                onDelete={onDelete}/>
+                                onDelete={onDelete}
+                                onSngUpOpen={onSngUpOpen}/>
                         ))}
                     </ul>
                 </div>
