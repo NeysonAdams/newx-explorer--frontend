@@ -1,6 +1,6 @@
 const apiKey = "c05cf0af963547b8bfcfc802ac214763"
 
-const baseUrl = "https://newsapi.org/v2/everything";
+const baseUrl = "https://nomoreparties.co/news/v2/everything";
 
 export const handleServerResponce = (res) =>{
     return res.ok? res.json() : Promise.reject(`Error: ${res.status}`);
@@ -8,12 +8,8 @@ export const handleServerResponce = (res) =>{
 
 export const searchNews = ({query}) =>
 {
-    const url = `${baseUrl}?q=${query}`;
+    const url = `${baseUrl}?q=${query}&apiKey=${apiKey}`;
     return fetch( url,{
-        method: 'GET',
-        headers: {
-            "Authorization": `Bearer ${apiKey}`,
-        },
-        mode:'cors'
+        method: 'GET'
     }).then(handleServerResponce);
 }

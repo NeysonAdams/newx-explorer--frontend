@@ -10,8 +10,14 @@ const SearchResult =(
         articlesObserv, 
         totalArticles, 
         articles,
+        keyword,
         showMoreHandler, 
-        isLoggedIn})=>
+        isLoggedIn,
+        isArticleSawed,
+        onSawe,
+        onDelete,
+        onSngUpOpen
+    })=>
 {
     
     
@@ -44,8 +50,27 @@ const SearchResult =(
                                 (() => {
                                     const result = [];
                                     for (let index = 0; index < articlesObserv; index++) {
-                                        
-                                        result.push(<Card item={articles[index]} key={index} isLoggedIn={isLoggedIn}/>);
+                                        //keyword, title, text, date, source, link, image
+                                        const article = {
+                                            "keyword": keyword,
+                                            "title":articles[index].title,
+                                            "text":articles[index].description,
+                                            "source":articles[index].source.name,
+                                            "date":articles[index].publishedAt,
+                                            "link":articles[index].url,
+                                            "image":articles[index].urlToImage,
+                                        }
+
+                                        const id = isArticleSawed({article});
+
+                                        result.push(<Card 
+                                            item={article} 
+                                            key={index} 
+                                            Sawed={id!==-1} 
+                                            isLoggedIn={isLoggedIn} 
+                                            onSawe={onSawe} 
+                                            onDelete={onDelete}
+                                            onSngUpOpen={onSngUpOpen}/>);
                                     }
                                     return result;
                                 })()

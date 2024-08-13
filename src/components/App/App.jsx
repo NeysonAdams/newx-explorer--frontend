@@ -15,7 +15,16 @@ import LoginModal from '../LoginModal/LoginModal';
 
 //Side Api
 import { searchNews } from '../../utils/NewsApi';
-import { test_data } from '../../utils/constanst';
+import { optionsValidation } from '../../utils/constanst';
+
+//Context
+import CurrentUserContext from "../../context/CurrentUserContext";
+
+//My Api
+import { getCurrentUser, getArticle, signUp, signin, saweArticle, deleteArticle } from '../../utils/MainApi';
+
+// Form Validator
+import { FormValidator } from "../../utils/FormValidator";
 
 function App() {
   const [isLoggedIn, setLoggedIn] = useState(false);
@@ -27,18 +36,114 @@ function App() {
   const [articlesObserv, setObservArticles] = useState(3);
   const [totalArticles, setTotalArticles] = useState(0);
   const [isSerchingStarted, setSerchingStart] = useState(false);
+  const [userArticles, setUserArticles] = useState(null);
+  const [keyword, setKeyword] = useState("");
+
+  
+  const [formValidators, setFormValidators] = useState([]);
+
+  const [currentUser, setCurrentUser] = useState(null);
+  const navigate = useNavigate();
+
+  // Form Validation
+  useEffect(() => {
+    if (isModalRegistraionOpen ||isModalLoginOpen) {
+      const modalsForms = document.querySelectorAll(".modal__form");
+      const newValidators = Array.from(modalsForms).map((form) => {
+        const formValidator = new FormValidator(optionsValidation, form);
+        formValidator.enableValidation();
+        return formValidator;
+      });
+      setFormValidators(newValidators);
+    } else {
+      formValidators.forEach((validator) => validator.removeValidation());
+      setFormValidators([]);
+    }
+  }, [isModalRegistraionOpen, isModalLoginOpen]);
+
+  //Authorization
+  useEffect(() => {
+    const token = localStorage.getItem("jwt");
+    if (token) {
+      getCurrentUser()
+        .then((res) => {
+          setCurrentUser(res);
+
+          setLoggedIn(true);
+        })
+        .catch(console.error);
+    }
+  }, [isLoggedIn]);
+
+  //Articles
+  useEffect(() => {
+    const token = localStorage.getItem("jwt");
+    console.log("get articles")
+    if (token) {
+      getArticle()
+        .then((res)=> {
+          setUserArticles(res)
+        })
+        .catch(console.error);
+    }
+  }, [isLoggedIn]);
+
+  const handleSaweArticle = ({ article }) =>
+  {
+    const token = localStorage.getItem("jwt");
+    console.log(article);
+    if(token){
+      saweArticle(article)
+        .then((newArticle)=>{
+          setUserArticles((prevAtrticles) => [...prevAtrticles, newArticle]);
+        })
+        .catch(console.error);
+    }
+  }
+
+  const isArticleSawed = ({article}) =>
+  {
+    if(userArticles ==null) return -1;
+    const index = userArticles.findIndex(item =>
+      item.title === article.title &&
+      item.text === article.text &&
+      item.keyword === article.keyword
+    );
+    return index
+  }
+
+  const handleDeleteFromSaweList = ({ article }) =>{
+    console.log("delete");
+    const token = localStorage.getItem("jwt");
+    if(token){
+      const index= isArticleSawed({article}) 
+      if (index !== -1) {
+        const curArticle = userArticles[index];
+        deleteArticle({id:curArticle._id})
+          .then((res)=>{
+            console.log("article deleted")
+            setUserArticles(prevItems => prevItems.filter(item => item._id !== curArticle._id));
+          })
+          .catch(console.error);
+        
+    }
+    }
+  }
 
   //Side Api Methods
   const searchNewsHandler = (query)=>
   {
+    if(query=="") return;
     setSerchingStart(true);
     setObservArticles(3);
+    setArticles(null);
     searchNews({query:query})
       .then((data) =>
       {
         setSerchingStart(false);
         setTotalArticles(data["totalResults"])
         setArticles(data["articles"]);
+        setKeyword(query);
       })
       .catch(console.error);
   }
@@ -47,9 +152,14 @@ function App() {
     setObservArticles(articlesObserv+3);
   }
 
-  // REgistration Modal Methods
+  // Registration Modal Methods
   const handleOnSignUp = (data) => {
-
+    signUp(data)
+      .then((res) => {
+        handleOnLogin({ email: data.email, password: data.password });
+        handleRegistrartionModalClose();
+      })
+      .catch(console.error);
   };
 
   const handleRegistrartionModalOpen = () =>
@@ -66,7 +176,22 @@ function App() {
   };
 
   //Login Modal Methods
-  const handleOnLogin = (data) => {}
+  const handleOnLogin = (data) => {
+    signin(data)
+      .then((res) => {
+        localStorage.setItem("jwt", res.token);
+        handleLoginModalClose();
+        setLoggedIn(true);
+      })
+      .catch(console.error);
+  }
+
+  const handleLogOut = () => {
+    localStorage.removeItem("jwt");
+    setLoggedIn(false);
+    setCurrentUser(null);
+    navigate("/");
+  };
 
   const handleLoginModalOpen = () => {
     setIsModalLoginOpen(true);
@@ -81,7 +206,7 @@ function App() {
   }
 
   return (
-    <>
+    <CurrentUserContext.Provider value={{ currentUser }}>
       <Routes>
         <Route
           exact
@@ -89,16 +214,22 @@ function App() {
           element={
             <>   
               <Header 
-                onSignUpOpen={handleRegistrartionModalOpen}  
+                onSignUpOpen={handleLoginModalOpen}  
                 isLoggedIn={isLoggedIn}
-                onSerch={searchNewsHandler}/>
+                onSerch={searchNewsHandler}
+                onLogOut={handleLogOut}/>
               <Main 
                 isSerchingStarted={isSerchingStarted} 
                 articlesObserv={articlesObserv}
                 totalArticles={totalArticles}
                 articles={articles}
+                keyword={keyword}
                 showMoreHandler={showMoreHandler}
-                isLoggedIn={isLoggedIn}/>
+                isLoggedIn={isLoggedIn}
+                onSawe={handleSaweArticle}
+                onDelete={handleDeleteFromSaweList}
+                isArticleSawed={isArticleSawed}
+                onSngUpOpen={handleRegistrartionModalOpen}/>
             </>
           }
         />
@@ -114,8 +245,14 @@ function App() {
                     onSignUpOpen={handleRegistrartionModalOpen} 
                     isLoggedIn={isLoggedIn} 
                     onSerch={searchNewsHandler}
+                    onLogOut={handleLogOut}
                     isArticles={true}/>
-                  <SavedArticles articles={test_data} isLoggedIn={isLoggedIn}/>
+                  <SavedArticles 
+                    articles={userArticles} 
+                    isLoggedIn={isLoggedIn}
+                    onSawe={handleSaweArticle}
+                    onDelete={handleDeleteFromSaweList}
+                    onSngUpOpen={handleRegistrartionModalOpen}/>
                 </>
               }
             />
@@ -136,7 +273,7 @@ function App() {
             onSignIn={handleOnLogin}
             onSingUpOpen={handleSwitchToSignUp}
           />
-    </>
+    </CurrentUserContext.Provider>
   )
 }
 

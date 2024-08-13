@@ -41,7 +41,21 @@
     transition: opacity 0.5s ease-in-out;
 }
 
-.card__button:hover .card__extra-message {
+.card__keyword
+{
+    display: flex;
+    position: absolute;
+    background-color: white;
+    height: 40px;
+    top: 24px;
+    left: 24px;
+    border-radius: 15px;
+    padding: 0 10px;
+    align-items: center;
+    justify-content: center; 
+}
+
+.card__extra-message-show {
     opacity: 1; 
 }
 

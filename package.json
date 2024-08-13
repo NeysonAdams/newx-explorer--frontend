@@ -1,8 +1,9 @@
 {
-  "name": "inter-space-frontend",
+  "name": "news-explorer",
   "private": true,
   "version": "0.0.0",
   "type": "module",
+  "homepage": "https://www.marconi.cow.strangled.net/",
   "scripts": {
     "dev": "vite --open",
     "build": "vite build",

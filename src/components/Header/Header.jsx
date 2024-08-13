@@ -7,7 +7,7 @@ import SearchForm from '../SearchForm/SearchForm';
 
 import menu from "../../images/menu.svg"
 
-const Header = ({onSignUpOpen, isLoggedIn, onSerch, isArticles=false}) =>{
+const Header = ({onSignUpOpen, isLoggedIn, onSerch, onLogOut, isArticles=false}) =>{
 
     const [menuOpen, setMenuOpen] = useState(false);
 
@@ -24,7 +24,7 @@ const Header = ({onSignUpOpen, isLoggedIn, onSerch, isArticles=false}) =>{
                 <h2 className='header__logo'>NewsExplorer</h2>
                 <div className='header__interactive'>
                     <Navigation isArticles={isArticles} isLoggedIn={isLoggedIn} menuOpen={menuOpen} toggleMenu={toggleMenu}>
-                        <Auth onSignUpOpen={onSignUpOpen} isArticles={isArticles} menuOpen={menuOpen}/>
+                        <Auth onSignUpOpen={onSignUpOpen} isArticles={isArticles} menuOpen={menuOpen} onLogOut={onLogOut}/>
                     </Navigation>
                 </div>
             </div>
