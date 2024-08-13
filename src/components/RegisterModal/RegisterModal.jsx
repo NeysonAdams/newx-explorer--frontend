@@ -14,7 +14,6 @@ const RegisterModal = ({isOpen, onSighUp, onCloseModal, onSwitchToLogin}) => {
       if(isOpen){
           setEmail('')
           setName('');
-          setImageUrl('');
           setPassword('');
       }
   }, [isOpen]);

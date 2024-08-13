@@ -122,7 +122,7 @@ function App() {
         deleteArticle({id:curArticle._id})
           .then((res)=>{
             console.log("article deleted")
-            userArticles.splice(index, 1)
+            setUserArticles(prevItems => prevItems.filter(item => item._id !== curArticle._id));
           })
           .catch(console.error);
         
