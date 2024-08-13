@@ -41,7 +41,7 @@ const SavedArticles =({articles, isLoggedIn,
             <div className="search__container">
             <div className="search__grid">
                     <ul className="search__grid-cards">
-                        {articles.map((item)=> (
+                        {articles && articles.map((item)=> (
                             <Card  
                                 item={item} 
                                 isArticles={true} 

@@ -15,13 +15,16 @@ import LoginModal from '../LoginModal/LoginModal';
 
 //Side Api
 import { searchNews } from '../../utils/NewsApi';
-import { test_data } from '../../utils/constanst';
+import { optionsValidation } from '../../utils/constanst';
 
 //Context
 import CurrentUserContext from "../../context/CurrentUserContext";
 
 //My Api
 import { getCurrentUser, getArticle, signUp, signin, saweArticle, deleteArticle } from '../../utils/MainApi';
+
+// Form Validator
+import { FormValidator } from "../../utils/FormValidator";
 
 function App() {
   const [isLoggedIn, setLoggedIn] = useState(false);
@@ -36,8 +39,27 @@ function App() {
   const [userArticles, setUserArticles] = useState(null);
   const [keyword, setKeyword] = useState("");
 
+  
+  const [formValidators, setFormValidators] = useState([]);
+
   const [currentUser, setCurrentUser] = useState(null);
   const navigate = useNavigate();
+
+  // Form Validation
+  useEffect(() => {
+    if (isModalRegistraionOpen ||isModalLoginOpen) {
+      const modalsForms = document.querySelectorAll(".modal__form");
+      const newValidators = Array.from(modalsForms).map((form) => {
+        const formValidator = new FormValidator(optionsValidation, form);
+        formValidator.enableValidation();
+        return formValidator;
+      });
+      setFormValidators(newValidators);
+    } else {
+      formValidators.forEach((validator) => validator.removeValidation());
+      setFormValidators([]);
+    }
+  }, [isModalRegistraionOpen, isModalLoginOpen]);
 
   //Authorization
   useEffect(() => {
@@ -56,6 +78,7 @@ function App() {
   //Articles
   useEffect(() => {
     const token = localStorage.getItem("jwt");
+    console.log("get articles")
     if (token) {
       getArticle()
         .then((res)=> {
@@ -63,7 +86,7 @@ function App() {
         })
         .catch(console.error);
     }
-  }, [userArticles]);
+  }, [isLoggedIn]);
 
   const handleSaweArticle = ({ article }) =>
   {

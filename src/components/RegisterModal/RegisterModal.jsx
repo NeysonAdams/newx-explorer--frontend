@@ -8,7 +8,6 @@ const RegisterModal = ({isOpen, onSighUp, onCloseModal, onSwitchToLogin}) => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [name, setName] = useState('');
-    const [imageUrl, setImageUrl] = useState('');
     const extraButton = {name: "Sign in", action: onSwitchToLogin};
 
     useEffect(()=>{
@@ -24,10 +23,6 @@ const RegisterModal = ({isOpen, onSighUp, onCloseModal, onSwitchToLogin}) => {
       setName(event.target.value);
     };
 
-    const handleImageUrlChange = (event) => {
-      setImageUrl(event.target.value);
-    };
-
     const handleEmailChange = (event) => {
       setEmail(event.target.value);
     };
@@ -41,7 +36,6 @@ const RegisterModal = ({isOpen, onSighUp, onCloseModal, onSwitchToLogin}) => {
       const newUser = {
           email:email,
           name: name,
-          avatar: imageUrl,
           password: password
       };
       onSighUp(newUser);

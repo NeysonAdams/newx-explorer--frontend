@@ -17,6 +17,29 @@ The backend for this project can be found at [News  Explorer Backend Repository]
 ### Profile Management:
     - Users can  remove stored articles from the list
 
+### Installation
+ 1. Clone the repository:
+    ```bash
+        git clone https://github.com/NeysonAdams/newx-explorer--frontend.git
+    ```
+ 2. Navigate to the project directory:
+    ```bash
+        cd newx-explorer--frontend
+    ```
+ 3. Install the dependencies:
+    ```bash
+        npm install
+    ```
+ 4. Running the Application
+    To start the development server, run:
+    ```bash
+        npm start
+    ```
+    runing in Dev Mode
+    ```bash
+        npm run dev
+    ```
+    The application will be available at http://localhost:5173/.
 
 ## Usage
 After starting the application, you can:
@@ -28,4 +51,4 @@ After starting the application, you can:
 ## Links
 
 - [Figma Design](https://www.figma.com/design/3ottwMEhlBt95Dbn8dw1NH/Your-Final-Project?node-id=22618-133&t=VMIA24Z6tQU2QsVN-0)
-- [Deploy Link](https://www.marconi.cow.strangled.net/)
+- [Lin ](https://www.marconi.cow.strangled.net/)

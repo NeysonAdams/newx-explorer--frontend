@@ -16,11 +16,11 @@ const SearchForm = ({onSerch}) =>
     }
 
     return (
-        <>
         <form className='search-form' 
                 onSubmit={handleSubmit}>
             <input 
                 onChange={handleQueryChange}
+                value={query}
                 className='search-form__input' 
                 type="text" 
                 placeholder='Enter topic' />
@@ -28,7 +28,6 @@ const SearchForm = ({onSerch}) =>
                 className="search-form__submit-button" 
                 type="submit">Search</button>
         </form>
-        </>
     );
 }
 
